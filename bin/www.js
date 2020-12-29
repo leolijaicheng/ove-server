@@ -1,8 +1,8 @@
 const Server = require('../src/app.js')
 
-const argv = JSON.stringify(process.argv[2])
+const argv = JSON.parse(process.argv[2])
 
-console.log(argv)
+console.log('argv::',argv)
 
 
 const server = new Server(argv)

@@ -33,5 +33,24 @@ const p1 = spawn('node',['www.js',JSON.stringify(argv)],{
     cwd:__dirname
 })
 
+
+p1.stdout.on('data',data => {
+    console.log(data.toString())
+})
+
+p1.stderr.on('data',data => {
+    console.error(`p1 de stderr:${data}`)
+})
+
+p1.on('close',code => {
+    if(code !== 0){
+        console.log(`进程退出，退出码${code}`)
+    }
+})
+
+p1.on('error',err => {
+    console.log(err)
+})
+
 // p1.unref()
 // process.exit(0)

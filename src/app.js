@@ -18,7 +18,6 @@ class StaticServer{
     constructor(argv){
         this.config = Object.assign({},config,argv)
         console.log("config::",this.config)
-        debug('sdfdsfsd')
         this.compileTpl = compileTpl()
     }
     startServer(){
@@ -26,7 +25,7 @@ class StaticServer{
         server.on('request',this.request.bind(this))
         server.listen(this.config.port,() =>{
             const serverUrl = `http://${this.config.host}:${this.config.port}`
-            console.log('serverUrl::',serverUrl)
+            // console.log('serverUrl::',serverUrl)
             debug(`服务已开启，地址为${chalk.green(serverUrl)}`)
         })
     }
@@ -42,7 +41,7 @@ class StaticServer{
         if(statObj.isDirectory()){//如果是一个目录的话，列出目录下面的内容
            let files = await readDir(filePath)
            let isHasIndexHtml = false
-           console.log("files::",files)
+        //    console.log("files::",files)
            files = files.map(file => {
                if(file.indexOf('index.html') > -1){
                    isHasIndexHtml = true
